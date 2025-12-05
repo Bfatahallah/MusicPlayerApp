@@ -9,7 +9,7 @@ import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
   return (
-    <div className="w-full h-screen flex flex-col bg-[#111] text-white overflow-hidden">
+    <div className="w-full flex flex-col bg-[#111] text-white">
       <Header />
       
       <div className="flex-1 overflow-y-auto">
