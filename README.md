@@ -1,6 +1,8 @@
 # 🎵 MusicPlayerApp
 
-A modern, sleek music player web application built with React and powered by the Deezer API. Search and play millions of tracks with a beautiful glassmorphic UI.
+A modern music player web application that lets you search and play millions of tracks from Deezer. Built with React and featuring a beautiful glassmorphic design.
+
+**How it works:** The app uses an Express.js proxy server to bypass CORS restrictions when connecting to the Deezer API, allowing you to search and play music seamlessly.
 
 ![React](https://img.shields.io/badge/React-19.2.0-blue)
 ![Vite](https://img.shields.io/badge/Vite-7.2.6-purple)
