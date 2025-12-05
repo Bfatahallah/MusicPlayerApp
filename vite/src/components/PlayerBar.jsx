@@ -68,9 +68,9 @@ export default function PlayerBar() {
             <div className="relative group">
               <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition"></div>
               <img
-                src={currentTrack.album?.cover_small}
+                src={currentTrack.album?.cover_medium}
                 alt={currentTrack.title}
-                className="relative w-14 h-14 rounded-lg object-cover shadow-xl"
+                className="relative w-20 h-20 rounded-lg object-cover shadow-xl"
               />
             </div>
             <div className="min-w-0 flex-1">
@@ -92,17 +92,17 @@ export default function PlayerBar() {
               <img 
                 src={isPlaying ? pauseIcon : playIcon} 
                 alt={isPlaying ? 'Pause' : 'Play'} 
-                className="w-10 h-10 brightness-0 invert" 
+                className="w-14 h-14 brightness-0 scale-250 invert "
               />
             </button>
             <button
               onClick={stopTrack}
-              className="w-12 h-12 bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center text-white transition-all transform hover:scale-110 active:scale-95 shadow-lg"
+              className="w-14 h-14 bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/30 rounded-full flex items-center justify-center text-white transition-all transform hover:scale-110 active:scale-95 shadow-lg"
             >
               <img 
                 src={stopIcon} 
                 alt="Stop" 
-                className="w-10 h-10 brightness-0 invert" 
+                className="w-14 h-14 brightness-0 scale-250 invert" 
               />
             </button>
           </div>

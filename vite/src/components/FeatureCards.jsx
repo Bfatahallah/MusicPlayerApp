@@ -24,15 +24,19 @@ export default function FeatureCards() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {items.map((it, idx) => (
-        <div
-          key={idx}
-          className="
-            rounded-2xl p-8 
-            bg-white/30 backdrop-blur-2xl border border-white/40 
-            shadow-[0_4px_30px_rgba(0,0,0,0.2)]
-            flex flex-col items-center justify-center gap-4 text-center
-          "
-        >
+      <div
+  key={idx}
+  className="
+    rounded-2xl 
+    p-8 
+    bg-white/10 
+    backdrop-blur-xl 
+    border border-white/30 
+    shadow-[0_8px_32px_rgba(0,0,0,0.3)]
+    flex flex-col items-center gap-4 text-center
+  "
+>
+
           <img src={it.icon} className="w-16 h-16 object-contain" />
 
           <h3 className="text-xl font-semibold text-white">
