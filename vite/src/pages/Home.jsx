@@ -15,7 +15,7 @@ export default function Home() {
       />
 
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/60" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/60" />
 
       {/* MAIN CONTENT */}
       <div className="relative z-10 w-full h-full flex flex-col items-center pt-28 px-4 gap-8">
