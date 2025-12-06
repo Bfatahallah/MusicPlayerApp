@@ -7,7 +7,8 @@ A modern music player web application that lets you search and play millions of 
 ![React](https://img.shields.io/badge/React-19.2.0-blue)
 ![Vite](https://img.shields.io/badge/Vite-7.2.6-purple)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-cyan)
-![License](https://img.shields.io/badge/License-ALX-green)
+![License](https://img.shields.io/badge/ALX-blue)
+
 
 ## ✨ Features
 
@@ -197,7 +198,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is licensed under ALX.
+This project was created as part of the ALX Software Engineering (Cohort 7-TL-FE ) curriculum and is intended for learning purposes only. It should not be used or distributed as a standalone licensed product.
+
 
 ## 👤 Author
 
