@@ -195,7 +195,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
-This project is licensed under the MIT License.
+This project was created as part of the ALX Software Engineering (Cohort 7-TL-FE ) curriculum and is intended for learning purposes only. It should not be used or distributed as a standalone licensed product.
+
 
 ## 👤 Author
 
