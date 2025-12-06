@@ -5,7 +5,8 @@ A modern, sleek music player web application built with React and powered by the
 ![React](https://img.shields.io/badge/React-19.2.0-blue)
 ![Vite](https://img.shields.io/badge/Vite-7.2.6-purple)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-cyan)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License]([https://img.shields.io/badge/License-MIT-green](https://img.shields.io/badge/ALX-Learner-success?style=for-the-badge&color=orange
+))
 
 ## ✨ Features
 
