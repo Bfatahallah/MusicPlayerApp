@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+const backendUrl = `/api/deezer?q=${encodeURIComponent(query)}`;
 const useMusicStore = create((set) => ({
   searchQuery: '',
   results: [],
