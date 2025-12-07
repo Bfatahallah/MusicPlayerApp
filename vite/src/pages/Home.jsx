@@ -21,17 +21,21 @@ export default function Home() {
       <div className="relative z-10 w-full h-full flex flex-col items-center pt-28 px-4 gap-8">
 
         {/* TITLE */}
+        <div className="h-20" />
         <h1 className="text-6xl md:text-7xl font-extrabold text-white text-center drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
           Music Player App
         </h1>
 
         {/* CTA BUTTON */}
+        <div className="h-15" />  
         <button
           onClick={() => navigate("/discover")}
-          className="px-10 py-7 rounded-full bg-blue-400 text-black font-semibold shadow-xl hover:scale-[1.15] active:scale-95 transition"
+          className="px-15 py-8 rounded-full bg-blue-400 text-black text-lg font-semibold shadow-xl hover:scale-[1.15] transition-transform duration-1000 hover:bg-linear-to-r hover:from-purple-600 hover:via-pink-500 hover:to-pink-600 hover:shadow-2xl hover:shadow-purple-500/50"
         >
           Start Listening
         </button>
+        {/* SPACER */}
+        <div className="h-20"></div>
 
         {/* SUBTITLE */}
         <p className="text-lg text-center max-w-2xl text-white/90 leading-relaxed">
@@ -40,7 +44,7 @@ export default function Home() {
           <span className="text-green-400"> play</span> millions of tracks from{" "}
           <a
             href="https://www.deezer.com"
-            className="text-blue-400 underline"
+            className="text-blue-400 underline hover:text-blue-600 hover:scale-105"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -53,10 +57,10 @@ export default function Home() {
         </p>
 
         {/* SPACER */}
-        <div className="flex-1"></div>
+        <div className="h-1"></div>
 
         {/* FEATURE CARDS */}
-        <div className="w-full max-w-5xl px-4 pb-8">
+        <div className="w-full max-w-4xl px-4 pb-12">
           <FeatureCards variant="homepage" />
         </div>
 

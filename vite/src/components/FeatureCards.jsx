@@ -34,6 +34,10 @@ export default function FeatureCards() {
     border border-white/30 
     shadow-[0_8px_32px_rgba(0,0,0,0.3)]
     flex flex-col items-center gap-4 text-center
+    hover:scale-105 
+   animate-fadeInUp 
+   transition 
+   duration-500    delay-[calc(0.1s*var(--idx))] cubic-bezier(0.4, 0, 0.2, 1)
   "
 >
 
