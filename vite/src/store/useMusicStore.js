@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-const backendUrl = `/api/deezer?q=${encodeURIComponent(query)}`;
 const useMusicStore = create((set) => ({
   searchQuery: '',
   results: [],
@@ -19,26 +18,24 @@ const useMusicStore = create((set) => ({
     console.log('Searching for:', query);
 
     try {
-      // Use our backend server to proxy the request
-      const backendUrl = `http://localhost:3001/api/search?q=${encodeURIComponent(query)}`;
-      
+      //  Vercel + Local serverless API (NO localhost)
+      const backendUrl = `/api/deezer?q=${encodeURIComponent(query)}`;
+
       console.log('Fetching from backend:', backendUrl);
-      
+
       const response = await fetch(backendUrl);
-      console.log('Response status:', response.status);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
-      
+
       const data = await response.json();
-      console.log('Data received from backend:', data);
-      
       const tracks = data.data || [];
+
       console.log('Found tracks:', tracks.length);
-      
+
       set({ results: tracks });
-      
+
       if (tracks.length === 0) {
         console.warn('No results found for query');
       }
@@ -50,23 +47,19 @@ const useMusicStore = create((set) => ({
 
   selectTrack: (track) => {
     set((state) => {
-      // Stop current audio if playing
       if (state.audio) {
         state.audio.pause();
         state.audio.currentTime = 0;
       }
 
-      // Check if track has preview
       if (!track.preview) {
         console.error('Track does not have a preview');
         return state;
       }
 
-      // Create new audio element
       const audio = new Audio(track.preview);
       audio.onended = () => set({ isPlaying: false });
 
-      // Auto play
       audio.play().catch((err) => console.error('Error playing audio:', err));
 
       return {
