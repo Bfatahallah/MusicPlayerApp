@@ -2,10 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 
 // Pages
-import Home from "./pages/Home";
-import Discover from "./pages/Discover";
-import FAQ from "./pages/FAQ";
-import ComingSoon from "./pages/ComingSoon";
+import Home from "./pages/Home.jsx";
+import Discover from "./pages/Discover.jsx";
+import FAQ from "./pages/FAQ.jsx";
+import ComingSoon from "./pages/ComingSoon.jsx";
 
 export default function App() {
   return (
