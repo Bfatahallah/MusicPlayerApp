@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-screen relative overflow-hidden">
+    <div className="w-full min-h-screen relative">
 
       {/* Background */}
       <img
@@ -20,20 +20,27 @@ export default function Home() {
       {/* MAIN CONTENT */}
       <div className="relative z-10 w-full h-full flex flex-col items-center pt-28 px-4 gap-8">
 
-        {/* TITLE */}
+        {/* TITLE SPACER */}
         <div className="h-20" />
+
+        {/* TITLE */}
         <h1 className="text-6xl md:text-7xl font-extrabold text-white text-center drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
           Music Player App
         </h1>
 
-        {/* CTA BUTTON */}
-        <div className="h-15" />  
-        <button
-          onClick={() => navigate("/discover")}
-          className="px-15 py-8 rounded-full bg-blue-400 text-black text-lg font-semibold shadow-xl hover:scale-[1.15] transition-transform duration-1000 hover:bg-linear-to-r hover:from-purple-600 hover:via-pink-500 hover:to-pink-600 hover:shadow-2xl hover:shadow-purple-500/50"
-        >
-          Start Listening
-        </button>
+        {/* CTA SPACER */}
+        <div className="h-15" />
+
+        {/* ✅ CTA BUTTON – hard-centered */}
+        <div className="w-full flex justify-center">
+          <button
+            onClick={() => navigate("/discover")}
+            className="px-15 py-8 rounded-full bg-blue-400 text-black text-lg font-semibold shadow-xl hover:scale-[1.15] transition-transform duration-1000 hover:bg-linear-to-r hover:from-purple-600 hover:via-pink-500 hover:to-pink-600 hover:shadow-2xl hover:shadow-purple-500/50"
+          >
+            Start Listening
+          </button>
+        </div>
+
         {/* SPACER */}
         <div className="h-20"></div>
 
