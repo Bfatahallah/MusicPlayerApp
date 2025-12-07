@@ -9,38 +9,25 @@ const useMusicStore = create((set) => ({
 
   setSearchQuery: (query) => set({ searchQuery: query }),
 
+  // Fetches from the Vercel serverless API route at /api/deezer
   searchDeezer: async (query) => {
-    if (!query.trim()) {
+    if (!query || !query.trim()) {
       set({ results: [] });
       return;
     }
 
-    console.log('Searching for:', query);
-
     try {
-      //  Vercel + Local serverless API (NO localhost)
-      const backendUrl = `/api/deezer?q=${encodeURIComponent(query)}`;
-
-      console.log('Fetching from backend:', backendUrl);
-
-      const response = await fetch(backendUrl);
+      const response = await fetch(`/api/deezer?q=${encodeURIComponent(query)}`);
 
       if (!response.ok) {
-        throw new Error(`HTTP Error: ${response.status}`);
+        set({ results: [] });
+        return;
       }
 
       const data = await response.json();
-      const tracks = data.data || [];
-
-      console.log('Found tracks:', tracks.length);
-
+      const tracks = Array.isArray(data.data) ? data.data : [];
       set({ results: tracks });
-
-      if (tracks.length === 0) {
-        console.warn('No results found for query');
-      }
-    } catch (error) {
-      console.error('Search error:', error);
+    } catch (err) {
       set({ results: [] });
     }
   },
@@ -52,20 +39,19 @@ const useMusicStore = create((set) => ({
         state.audio.currentTime = 0;
       }
 
-      if (!track.preview) {
-        console.error('Track does not have a preview');
+      if (!track || !track.preview) {
         return state;
       }
 
       const audio = new Audio(track.preview);
       audio.onended = () => set({ isPlaying: false });
-
-      audio.play().catch((err) => console.error('Error playing audio:', err));
+      // Attempt to play; ignore play Promise errors in browsers that block autoplay
+      audio.play().catch(() => {});
 
       return {
         currentTrack: track,
         isPlaying: true,
-        audio: audio,
+        audio,
       };
     });
   },
@@ -77,7 +63,7 @@ const useMusicStore = create((set) => ({
       if (state.isPlaying) {
         state.audio.pause();
       } else {
-        state.audio.play().catch((err) => console.error('Error playing audio:', err));
+        state.audio.play().catch(() => {});
       }
 
       return { isPlaying: !state.isPlaying };
@@ -88,7 +74,9 @@ const useMusicStore = create((set) => ({
     set((state) => {
       if (state.audio) {
         state.audio.pause();
-        state.audio.currentTime = 0;
+        try {
+          state.audio.currentTime = 0;
+        } catch (e) {}
       }
       return { currentTrack: null, isPlaying: false };
     });

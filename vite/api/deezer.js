@@ -2,18 +2,29 @@ export default async function handler(req, res) {
   const { q } = req.query;
 
   if (!q) {
-    return res.status(400).json({ error: "Missing search query" });
+    return res.status(400).json({ error: 'Query parameter "q" is required' });
   }
 
   try {
     const response = await fetch(
-      `https://api.deezer.com/search?q=${encodeURIComponent(q)}`
+      `https://api.deezer.com/search?q=${encodeURIComponent(q)}&limit=50`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      }
     );
 
+    if (!response.ok) {
+      throw new Error(`Deezer API error: ${response.status} ${response.statusText}`);
+    }
+
     const data = await response.json();
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(500).json({ error: "Deezer fetch failed" });
+    // Cache results at CDN level for 1 hour
+    res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=59');
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(502).json({ error: error.message || 'Failed to fetch from Deezer' });
   }
 }
