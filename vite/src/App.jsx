@@ -4,10 +4,10 @@ import Header from "./components/Header";
 import PlayerBar from "./components/PlayerBar";
 
 // Pages
-import Home from "./Pages/Home.jsx";
-import Discover from "./Pages/Discover.jsx";
-import FAQ from "./Pages/FAQ.jsx";
-import ComingSoon from "./Pages/ComingSoon.jsx";
+import Home from "./pages/Home";
+import Discover from "./pages/Discover";
+import FAQ from "./pages/FAQ";
+import ComingSoon from "./pages/ComingSoon";
 
 export default function App() {
   const location = useLocation();
