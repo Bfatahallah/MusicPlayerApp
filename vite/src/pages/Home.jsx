@@ -5,72 +5,59 @@ export default function Home() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full min-h-screen relative">
+    <div className="w-full min-h-screen relative overflow-hidden bg-black">
 
-      {/* Background */}
+      {/* Background with blur */}
       <img
         src="/Background.jpg"
         alt="background"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover opacity-40"
       />
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/20 to-black/60" />
+      {/* Modern glass gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70 backdrop-blur-sm" />
 
-      {/* MAIN CONTENT */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center pt-28 px-4 gap-8">
+      {/* MAIN CONTENT - Full-screen sections with explicit ratios */}
+      <div className="relative z-10 w-full flex flex-col px-6 sm:px-10 md:px-16 pt-20 pb-12 gap-6 justify-between min-h-screen">
+        <section className="w-full max-w-6xl mx-auto flex flex-col items-center text-center min-h-[35vh] justify-center">
+          {/* TITLE */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
+            Music Player App
+          </h1>
+        </section>
 
-        {/* TITLE SPACER */}
-        <div className="h-20" />
+        <section className="w-full max-w-5xl mx-auto">
+          {/* SUBTITLE */}
+          <p className="text-base sm:text-lg text-white/80 leading-relaxed text-center">
+            <span className="text-red-400 font-semibold">Discover</span>
+            <span className="text-white">, search, and</span>
+            <span className="text-green-400 font-semibold"> play</span>
+            <span className="text-white"> millions of tracks from </span>
+            <a href="https://www.deezer.com" className="text-blue-300 font-semibold hover:underline" target="_blank" rel="noopener noreferrer">Deezer</a>
+            <span className="text-white">. Your soundtrack starts </span>
+            <span className="text-pink-400 font-semibold">here</span>.
+          </p>
+        </section>
 
-        {/* TITLE */}
-        <h1 className="text-6xl md:text-7xl font-extrabold text-white text-center drop-shadow-[0_0_20px_rgba(0,0,0,0.7)]">
-          Music Player App
-        </h1>
-
-        {/* CTA SPACER */}
-        <div className="h-15" />
-
-        {/* ✅ CTA BUTTON – hard-centered */}
-        <div className="w-full flex justify-center">
+        <section className="w-full max-w-5xl mx-auto flex items-center justify-center">
+          {/* CTA BUTTON */}
           <button
             onClick={() => navigate("/discover")}
-            className="px-15 py-8 rounded-full bg-blue-400 text-black text-lg font-semibold shadow-xl hover:scale-[1.15] transition-transform duration-1000 hover:bg-linear-to-r hover:from-purple-600 hover:via-pink-500 hover:to-pink-600 hover:shadow-2xl hover:shadow-purple-500/50"
+            className="px-12 sm:px-16 md:px-20 py-3 sm:py-4 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-base sm:text-lg font-bold shadow-xl hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95 backdrop-blur-md border border-white/30 hover:border-white/50"
           >
             Start Listening
           </button>
-        </div>
+        </section>
 
-        {/* SPACER */}
-        <div className="h-20"></div>
+        {/* Spacer to force features lower if needed */}
+        <div className="h-8 sm:h-10 md:h-12" />
 
-        {/* SUBTITLE */}
-        <p className="text-lg text-center max-w-2xl text-white/90 leading-relaxed">
-          <span className="text-red-400 font-semibold">Discover</span>,
-          <span className="text-white"> search</span>, and
-          <span className="text-green-400"> play</span> millions of tracks from{" "}
-          <a
-            href="https://www.deezer.com"
-            className="text-blue-400 underline hover:text-blue-600 hover:scale-105"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Deezer
-          </a>.
-          Your soundtrack starts{" "}
-          <span className="text-pink-400 font-semibold underline cursor-pointer">
-            here
-          </span>.
-        </p>
-
-        {/* SPACER */}
-        <div className="h-1"></div>
-
-        {/* FEATURE CARDS */}
-        <div className="w-full max-w-4xl px-4 pb-12">
-          <FeatureCards variant="homepage" />
-        </div>
-
+        <section className="w-full max-w-6xl mx-auto flex-1 flex items-start mt-16">
+          {/* FEATURE CARDS */}
+          <div className="w-full px-2 sm:px-0">
+            <FeatureCards variant="homepage" />
+          </div>
+        </section>
       </div>
     </div>
   );

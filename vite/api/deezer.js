@@ -23,6 +23,7 @@ export default async function handler(req, res) {
     const data = await response.json();
     // Cache results at CDN level for 1 hour
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=59');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     return res.status(200).json(data);
   } catch (error) {
     return res.status(502).json({ error: error.message || 'Failed to fetch from Deezer' });

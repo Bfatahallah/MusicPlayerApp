@@ -7,16 +7,16 @@ const PORT = 3001;
 // Enable CORS for all routes
 app.use(cors());
 
-// Search endpoint
+// Search endpoint with optional limit
 app.get('/api/search', async (req, res) => {
-  const { q } = req.query;
+  const { q, limit = 100 } = req.query;
   
   if (!q) {
     return res.status(400).json({ error: 'Query parameter required' });
   }
 
   try {
-    const deezerUrl = `https://api.deezer.com/search?q=${encodeURIComponent(q)}&limit=50`;
+    const deezerUrl = `https://api.deezer.com/search?q=${encodeURIComponent(q)}&limit=${Math.min(parseInt(limit), 250)}`;
     console.log(`[Backend] Fetching from Deezer: ${deezerUrl}`);
     
     const response = await fetch(deezerUrl);
