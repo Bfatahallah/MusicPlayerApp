@@ -1,33 +1,56 @@
-# Troubleshooting (plain language)
+# Troubleshooting Guide
 
-### npm not recognized
-Install Node.js from https://nodejs.org/ and reopen PowerShell.
+Student-first fixes with explicit checks and outcomes.
 
-### Port 3001 or 5173 busy
-Close other Node processes or restart your machine, then run `npm run dev:all` again.
+## Environment & Tools
+- Install Node.js LTS: https://nodejs.org/
+- Use PowerShell on Windows; reopen terminal after install.
 
-### Search says “Cannot GET /api/search”
-Backend is off. From `vite/`, run `npm run dev:all` (or in root run `node server.js`).
+## Startup Issues
+- npm not recognized: reinstall Node.js, then reopen PowerShell.
+- Port 3001/5173 busy: stop other Node processes or reboot. Then:
+	```powershell
+	npm run dev:all
+	```
 
-### Search works locally but not on Vercel
-Confirm `vite/api/search.js` is in Git, redeploy, and read the Vercel build log.
+## Backend / API
+- “Cannot GET /api/search”: backend is off. Start from `vite/`:
+	```powershell
+	npm run dev:all
+	```
+- Test directly in browser: open http://localhost:3001/api/search?q=test
+	- If it loads JSON: backend OK
+	- If it fails: backend not running or blocked by firewall
 
-### Getting CORS errors
-Ensure `app.use(cors())` is in `server.js`, then restart `npm run dev:all`.
+## Frontend / Tailwind
+- Styles don’t apply: ensure valid Tailwind classes. Use `bg-gradient-to-r` (not `bg-linear-to-r`). Save to trigger HMR.
+- Layout won’t move: parents with fixed `min-h-*` or `overflow` can lock children. Use a single `min-h-screen` wrapper and adjust section `mt-*`/`gap-*`.
 
-### Debounce feels wrong
-Edit `DEBOUNCE_DELAY` in `src/store/useMusicStore.js` (value is milliseconds). Save and the app reloads.
+## Audio Playback
+- No audio: try multiple tracks; some Deezer previews are missing.
+- Volume/mute: confirm not muted and volume > 0.
+- Console errors: open DevTools (F12) → Console; copy errors into an issue.
 
-### No audio
-Try another track; some previews are missing. Check volume isn’t muted and look at the browser console for errors.
+## Search Behavior
+- “No tracks found” always: test http://localhost:3001/api/search?q=test. If it fails, backend/internet issue.
+- Debounce too slow/fast: update `DEBOUNCE_DELAY` in [src/store/useMusicStore.js](src/store/useMusicStore.js).
 
-### Always “No tracks found”
-Visit `http://localhost:3001/api/search?q=test`. If that fails, the backend or internet connection is down.
+## Live Reload / HMR
+- Changes not showing: confirm `npm run dev:all` is running; save file; hard refresh (Ctrl+Shift+R).
+- Still stuck: stop servers, restart `npm run dev:all`.
 
-### Changes not showing
-Make sure `npm run dev:all` is running, save the file, then hard refresh (Ctrl+Shift+R). If still stuck, restart the servers.
+## Build & Deploy
+- Build fails “cannot find module”: delete `node_modules` and `package-lock.json`, reinstall, then build.
+	```powershell
+	rm -r node_modules
+	rm package-lock.json
+	npm install
+	npm run build
+	```
+- Vercel: ensure `vite/api/search.js` & `deezer.js` exist, set root to `vite/`, Output dir `dist`.
 
-### Build fails: cannot find module
-Delete `node_modules` and `package-lock.json`, run `npm install`, then `npm run build`.
-
-If none of these help, read the terminal output and the browser console—they usually explain what broke.
+## When All Else Fails
+- Read terminal output and browser console—copy error text into an issue. Include:
+	- What you ran
+	- What you expected
+	- What happened (screenshots help)

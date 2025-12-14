@@ -1,34 +1,38 @@
-# Quick Start 
+# Quick Start
 
-## 1) Install
+Fast path to run and test the app.
+
+## Install
 ```powershell
-cd vite
+cd "c:\Users\bfata\Desktop\ALX\MusicPlayerApp\vite"
 npm install
 ```
 
-## 2) Run everything
+## Run (frontend + backend)
 ```powershell
 npm run dev:all
 ```
 - Frontend: http://localhost:5173
 - Backend:  http://localhost:3001
 
-## 3) Try it
-Open http://localhost:5173, search an artist ("Taylor Swift"), click an album, then click a track to hear the preview.
+## First Test
+1. Open http://localhost:5173
+2. Search for an artist (e.g., “Taylor Swift”)
+3. Click an album, then click a track to hear the 30s preview
 
-## Common tweaks
-- Debounce speed: change `DEBOUNCE_DELAY` in `src/store/useMusicStore.js`
-- Result limit: change `limit` in `server.js` (and `api/search.js` for Vercel)
-- Default sort: change `sortBy` in `src/store/useMusicStore.js`
+## Common Tweaks
+- Debounce speed: change `DEBOUNCE_DELAY` in [src/store/useMusicStore.js](src/store/useMusicStore.js)
+- Result limit: change `limit` in [server.js](server.js) and [api/search.js](api/search.js)
+- Default sort: change `sortBy` in [src/store/useMusicStore.js](src/store/useMusicStore.js)
 
-## If it breaks
-- Port busy? Close other `node` processes, then rerun `npm run dev:all`.
-- Search fails? Make sure the backend is running and `http://localhost:3001/api/search?q=test` loads.
-- Player hidden? Click any track first.
+## Quick Fixes
+- Port busy: close other Node processes or reboot; rerun `npm run dev:all`
+- Search fails: verify http://localhost:3001/api/search?q=test opens in the browser
+- Player hidden: click any track first to reveal the player
 
 ## Deploy (Vercel)
-1) Push to GitHub
-2) In Vercel set root to `vite/`
-3) Build command: `npm run build`, output: `dist`
+1. Push to GitHub
+2. In Vercel, set project root to `vite/`
+3. Build: `npm run build`, Output: `dist`
 
-That’s it—happy listening!
+Happy listening!
